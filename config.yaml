@@ -1,0 +1,69 @@
+model: Supervised
+
+#for supervised model, set to true the task you want to train, to false the others
+drug_disease: True
+drug_side_effect: False
+disease_protein: False
+function_function: False
+
+encoder:
+  layer: GIN         #GCNConv, SAGEConv, GATConv, GIN
+  dim: 128                   # embedding dimension
+  n_layers: 2                # number of transformer layers
+  n_heads: 2                 # number of attention heads
+  mlp_ratio: 2.
+  drop_rate: 0.25
+  attn_drop_rate: 0.25
+  drop_path: 0.25
+  norm_layer: BatchNorm1d  #BatchNorm1d, LayerNorm
+  act_layer: GELU  #GELU, ReLU, ELU, SiLU
+  num_classes: 5
+  output_dim: 128
+  use_embedding: False
+  use_pre_norm: False
+  residual_connections: False
+  scale_factor: none #opzioni: none, half
+
+head:
+  out_dim: 8192
+  use_bn: False
+  norm_last_layer: True
+  n_layers: 2
+  hidden_dim: 384
+  bottleneck_dim: 256
+
+dataset: BioKG
+
+loader:
+  batch_size: 512
+  n_neighbors: [30, 30]
+
+training:
+  optim: AdamW
+  lr: 1e-4                   # max LR
+  n_steps: 3000    
+  warmup: 300                # initial LR warmup
+  decay: cosine              # LR decay policy
+  wT0: 600
+  wTmult: 1
+  init_wd: 0.004              # initial AdamW optimizer weight decay
+  final_wd: 0.04              # final AdamW optimizer weight decay
+  amp: True                  # automatic mixed precision to reduce memory usage
+  grad_clip:   1             # gradient clipping norm
+  save_every: 5e2            # intervale between model checkpoints
+  init_momentum: 0.996       # initial exponential moving average coefficient to update teacher net
+  final_momentum: 1.         # final exponential moving average coefficient to update teacher net
+  student_temp: 0.1          # temperature coefficient for sharpening student representations
+  init_teacher_temp: 0.04    # temperature coefficient for sharpening teacher representations
+  final_teacher_temp: 0.07   # temperature coefficient for sharpening teacher representations
+  center_momentum: 0.9       # momentum of the exponential moving average to center teacher representations
+  dropout_edge_p: 0.2
+
+augmentations:
+  subgraph_s: 0.25
+  edge_rem_s: 0.25
+  node_rem_s: 0.25
+  edge_mask_s: 0.25
+  node_mask_s: 0.25
+  subgraph_t_: 0.15
+  edge_rem_t: 0.25

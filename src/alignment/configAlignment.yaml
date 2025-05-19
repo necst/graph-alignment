@@ -1,0 +1,59 @@
+model1:
+  model: VGAE                 
+
+  encoder:
+    layer: Transformer         #GCNConv, SAGEConv, GATConv, GIN
+    dim: 256                   # embedding dimension
+    n_layers: 2                # number of transformer layers
+    n_heads: 6                 # number of attention heads
+    mlp_ratio: 2.
+    drop_rate: 0.25
+    attn_drop_rate: 0.25
+    drop_path: 0.25
+    norm_layer: BatchNorm1d  #BatchNorm1d, LayerNorm
+    act_layer: GELU  #GELU, ReLU, ELU, SiLU
+    num_classes: 5
+    output_dim: 128
+    use_embedding: False
+    use_pre_norm: False
+    residual_connections: False
+    scale_factor: half #opzioni: none, half
+
+  head:
+    out_dim: 16384
+    use_bn: False
+    norm_last_layer: True
+    n_layers: 2
+    hidden_dim: 384
+    bottleneck_dim: 256
+
+dataset: BioKG
+
+model2:
+  model: VGAE                 
+
+  encoder:
+    layer: Transformer         #GCNConv, SAGEConv, GATConv, GIN
+    dim: 256                   # embedding dimension
+    n_layers: 2                # number of transformer layers
+    n_heads: 6                 # number of attention heads
+    mlp_ratio: 2.
+    drop_rate: 0.25
+    attn_drop_rate: 0.25
+    drop_path: 0.25
+    norm_layer: BatchNorm1d  #BatchNorm1d, LayerNorm
+    act_layer: GELU  #GELU, ReLU, ELU, SiLU
+    num_classes: 5
+    output_dim: 128
+    use_embedding: False
+    use_pre_norm: False
+    residual_connections: False
+    scale_factor: half #opzioni: none, half
+
+  head:
+    out_dim: 16384
+    use_bn: False
+    norm_last_layer: True
+    n_layers: 2
+    hidden_dim: 384
+    bottleneck_dim: 256

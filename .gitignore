@@ -1,0 +1,14 @@
+# files
+*.pt
+*.png
+*.eps
+
+# dirs
+load_data
+src/data/dataset
+dataset
+\runs
+\plots
+
+# cache 
+\__pycache__

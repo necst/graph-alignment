@@ -1,0 +1,112 @@
+models:
+  - name: Supervised_drug_disease
+    run: supervised/run_1
+    checkpoint: checkpoint_3000
+    score: 0.7840
+
+  - name: Supervised_drug_sideeffect
+    run: supervised/run_2
+    checkpoint: checkpoint_3000
+    score: 0.8214
+
+  - name: Supervised_disease_protein
+    run: supervised/run_3
+    checkpoint: checkpoint_3000
+    score: 0.7895
+
+  - name: Supervised_function_function
+    run: supervised/run_4
+    checkpoint: checkpoint_3000
+    score: 0.7518
+
+#  - name: VGAE_small
+#    run: vgae-infomax/run_1
+#    checkpoint: checkpoint_3000
+#    score: 0.9194
+#
+#  - name: VGAE_medium
+#    run: vgae-infomax/run_2
+#    checkpoint: checkpoint_3000
+#    score: 0.9170
+#
+#  - name: VGAE_large
+#    run: vgae-infomax/run_3
+#    checkpoint: checkpoint_3000
+#    score: 0.9129
+
+  - name: DGI_small
+    run: vgae-infomax/run_4
+    checkpoint: checkpoint_3000
+    score: 0.9269
+
+  - name: DGI_medium
+    run: vgae-infomax/run_5
+    checkpoint: checkpoint_3000
+    score: 0.9308
+##
+#  - name: DGI_large
+#    run: vgae-infomax/run_6
+#    checkpoint: checkpoint_3000
+#    score: 0.9329
+
+  - name: DINO_small
+    run: dino/run_1
+    checkpoint: checkpoint_3000
+    score: 0.9257
+
+  - name: DINO_medium
+    run: dino/run_2
+    checkpoint: checkpoint_3000
+    score: 0.9273
+
+#  - name: DINO_large
+#    run: dino/run_3
+#    checkpoint: checkpoint_3000
+#    score: 0.9299
+
+  - name: Dino_Transf_small
+    run: dino/run_4
+    checkpoint: checkpoint_3000
+    score: 0.9170
+
+  - name: Dino_Transf_medium
+    run: dino/run_5
+    checkpoint: checkpoint_3000
+    score: 0.9204
+#
+#  - name: Dino_Transf_large
+#    run: dino/run_6
+#    checkpoint: checkpoint_3000
+#    score: 0.9242
+
+#  - name: GraphCL_small
+#    run: graphcl/run_1
+#    checkpoint: checkpoint_3000
+#    score: 0.9246
+#
+#  - name: GraphCL_medium
+#    run: graphcl/run_2
+#    checkpoint: checkpoint_3000
+#    score: 0.9295
+#
+#  - name: GraphCL_large
+#    run: graphcl/run_3
+#    checkpoint: checkpoint_3000
+#    score: 0.9297
+
+align_to_one:
+  left_model:
+    - Dino_Transf_small
+    - Dino_Transf_medium
+  right_models:
+    - Supervised_drug_disease
+    - Supervised_drug_sideeffect
+    - Supervised_disease_protein
+    - Supervised_function_function
+    - DINO_small
+    - DINO_medium
+    - DGI_small
+    - DGI_medium
+
+
+knn_k: 10
