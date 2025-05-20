@@ -261,7 +261,7 @@ def plot_fig3(cross_align: Dict[Tuple[str, str], float], perf: Dict[str, float],
     marker_map = {k: marker_styles[i % len(marker_styles)] for i, k in enumerate(unique_markers)}
 
     # Setup plot
-    plt.figure(figsize=(6.3, 3.2))
+    plt.figure(figsize=(8, 6))
     sns.set(style="whitegrid")
     ax = plt.gca()
 
@@ -334,7 +334,7 @@ def plot_intra_group_alignment(alignment_df: pd.DataFrame, supervised_names: lis
     unsupervised_score = average_alignment_within(unsupervised_set)
 
     # Bar plot
-    plt.figure(figsize=(3, 3))
+    plt.figure(figsize=(5, 4))
     plt.bar(["Supervised", "Unsupervised"], [supervised_score, unsupervised_score], color=["#4C72B0", "#55A868"])
     plt.ylabel("Average intra-group alignment")
     plt.title(f"{metric}")
