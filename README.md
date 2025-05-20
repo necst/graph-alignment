@@ -5,19 +5,19 @@
 Prima di eseguire il codice, assicurati di seguire questi passaggi:
 
 1. **Struttura cartelle**
-   - All’interno di `src`, crea la seguente struttura:
+   - All’interno di `src/data`, crea la seguente struttura:
      ```
      src/data/dataset/ogbl_biokg
      ```
    - Scarica dal Drive il file `load_data.zip` e decomprimilo nella cartella `ogbl_biokg`.
 
 2. **Cartella dei risultati**
-   - All’interno di `stunning-enigma`, crea una cartella `runs`.
+   - All’interno di `graph-alignment`, crea una cartella `runs`.
    - Inserisci in `runs` le seguenti cartelle scaricate dal Drive:
      - `vgae-infomax`
      - `dino`
      - `supervised`
-     - 
+     
 3. **Creazione ambiente conda**
    - Crea l'ambiente conda dal file `environment.yaml`
 
